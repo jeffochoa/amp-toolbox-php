@@ -32,6 +32,7 @@ use DOMXPath;
  * @property Element      $ampCustomStyle          The document's <style amp-custom> element.
  * @property int          $ampCustomStyleByteCount Count of bytes of the CSS in the <style amp-custom> tag.
  * @property int          $inlineStyleByteCount    Count of bytes of the CSS in all of the inline style attributes.
+ * @property LinkManager  $links                   Link manager to manage <link> tags in the <head>.
  *
  * @package ampproject/amp-toolbox
  */
@@ -308,6 +309,13 @@ final class Document extends DOMDocument
      * @var int
      */
     private $cssMaxByteCountEnforced = -1;
+
+    /**
+     * Link manager to manage <link> tags in the <head>.
+     *
+     * @var LinkManager|null
+     */
+    private $linkManager;
 
     /**
      * Creates a new AmpProject\Dom\Document object
@@ -1802,6 +1810,13 @@ final class Document extends DOMDocument
                 }
 
                 return $this->inlineStyleByteCount;
+
+            case 'links':
+                if (! isset($this->linkManager)) {
+                    $this->linkManager = new LinkManager($this);
+                }
+
+                return $this->linkManager;
         }
 
         // Mimic regular PHP behavior for missing notices.
