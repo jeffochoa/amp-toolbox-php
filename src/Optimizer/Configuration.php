@@ -10,7 +10,7 @@ use AmpProject\Optimizer\Exception\UnknownConfigurationClass;
 use AmpProject\Optimizer\Exception\UnknownConfigurationKey;
 use AmpProject\Optimizer\Transformer\AmpBoilerplate;
 use AmpProject\Optimizer\Transformer\AmpRuntimeCss;
-use AmpProject\Optimizer\Transformer\BrowserHints;
+use AmpProject\Optimizer\Transformer\ResourceHints;
 use AmpProject\Optimizer\Transformer\PreloadHeroImage;
 use AmpProject\Optimizer\Transformer\ReorderHead;
 use AmpProject\Optimizer\Transformer\ServerSideRendering;
@@ -52,7 +52,7 @@ final class Configuration
         TransformedIdentifier::class,
         ReorderHead::class,
         PreloadHeroImage::class,
-        BrowserHints::class,
+        ResourceHints::class,
     ];
 
     /**
