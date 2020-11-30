@@ -10,6 +10,7 @@ use AmpProject\Optimizer\Exception\UnknownConfigurationClass;
 use AmpProject\Optimizer\Exception\UnknownConfigurationKey;
 use AmpProject\Optimizer\Transformer\AmpBoilerplate;
 use AmpProject\Optimizer\Transformer\AmpRuntimeCss;
+use AmpProject\Optimizer\Transformer\AmpRuntimePreloads;
 use AmpProject\Optimizer\Transformer\GoogleFontsPreconnect;
 use AmpProject\Optimizer\Transformer\PreloadHeroImage;
 use AmpProject\Optimizer\Transformer\ReorderHead;
@@ -38,21 +39,6 @@ final class Configuration
      */
     const DEFAULTS = [
         self::KEY_TRANSFORMERS => self::DEFAULT_TRANSFORMERS,
-    ];
-
-    /**
-     * Array of FQCNs of transformers to use for the default setup.
-     *
-     * @var string[]
-     */
-    const DEFAULT_TRANSFORMERS = [
-        AmpBoilerplate::class,
-        ServerSideRendering::class,
-        AmpRuntimeCss::class,
-        TransformedIdentifier::class,
-        ReorderHead::class,
-        PreloadHeroImage::class,
-        ResourceHints::class,
     ];
 
     /**
@@ -116,6 +102,22 @@ final class Configuration
 
         return $configurationData;
     }
+
+    /**
+     * Array of FQCNs of transformers to use for the default setup.
+     *
+     * @var string[]
+     */
+    const DEFAULT_TRANSFORMERS = [
+        AmpBoilerplate::class,
+        ServerSideRendering::class,
+        AmpRuntimeCss::class,
+        TransformedIdentifier::class,
+        PreloadHeroImage::class,
+        AmpRuntimePreloads::class,
+        GoogleFontsPreconnect::class,
+        ReorderHead::class,
+    ];
 
     /**
      * Validate an individual configuration setting.
