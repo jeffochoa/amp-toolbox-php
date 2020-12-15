@@ -60,13 +60,26 @@ final class SpecTest extends TestCase
     {
         $scenarios = [];
         $suites    = [
-            'AmpRuntimeCss'       => [
+            'AmpRuntimeCss'         => [
                 AmpRuntimeCss::class,
                 self::TRANSFORMER_SPEC_PATH . '/AmpBoilerplateTransformer',
             ],
-            'PreloadHeroImage'    => [PreloadHeroImage::class, self::TRANSFORMER_SPEC_PATH . '/PreloadHeroImage'],
-            'ReorderHead'         => [ReorderHead::class, self::TRANSFORMER_SPEC_PATH . '/ReorderHeadTransformer'],
-            'ServerSideRendering' => [ServerSideRendering::class, self::TRANSFORMER_SPEC_PATH . '/ServerSideRendering'],
+            'PreloadHeroImage'      => [
+                PreloadHeroImage::class,
+                self::TRANSFORMER_SPEC_PATH . '/PreloadHeroImage'
+            ],
+            'ReorderHead'           => [
+                ReorderHead::class,
+                self::TRANSFORMER_SPEC_PATH . '/ReorderHeadTransformer'
+            ],
+            'ServerSideRendering'   => [
+                ServerSideRendering::class,
+                self::TRANSFORMER_SPEC_PATH . '/ServerSideRendering'
+            ],
+            'GoogleFontsPreconnect' => [
+                GoogleFontsPreconnect::class,
+                self::TRANSFORMER_SPEC_PATH . '/GoogleFontsPreconnect'
+            ]
         ];
 
         foreach ($suites as $key => list($transformerClass, $specFileFolder)) {
